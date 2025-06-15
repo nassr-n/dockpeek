@@ -37,5 +37,5 @@ services:
       - USERNAME=admin # Set username for login
       - PASSWORD=admin # Set password for login
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     restart: unless-stopped
