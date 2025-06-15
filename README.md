@@ -9,7 +9,7 @@
 
 ## Features
 
-- Displays Docker container port mappings on the host
+- Displays Docker container port mappings
 - Shows container status
 - Search containers by name and image
 - Dark mode (night mode) support
