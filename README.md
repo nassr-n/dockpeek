@@ -14,7 +14,7 @@
 - Search containers by name and image
 - Dark mode (night mode) support
 - Lightweight and easy to deploy with Docker
-- **User login support
+- User login support
 
 ## Screenshots
 <p align="left">
