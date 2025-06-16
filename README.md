@@ -84,6 +84,6 @@ services:
     ports:
       - "3420:8000"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     restart: unless-stopped
 ```
