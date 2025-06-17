@@ -22,8 +22,6 @@
 
 ### Deployment Options
 
-> **Recommended:** Use `socket-proxy` for secure access to Docker API.
-
 ### 🔧 Option 1: Secure Setup (with `socket-proxy`)
 
 ```yaml
@@ -62,8 +60,6 @@ services:
 ```
 
 ### Option 2: Direct Access (without proxy)
-
-> **⚠️ Not Recommended:** Grants full access to Docker Socket.
 
 ```yaml
 services:
