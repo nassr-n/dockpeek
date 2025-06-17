@@ -23,6 +23,34 @@
         0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
 
+    .logo-title {
+      color: #e1e4e8;
+    }
+    body.dark-mode .logo-title {
+      color: #2a2f37;
+    }
+    .github {
+      color: #acb1b9;
+    }
+    body.dark-mode .github {
+      color: #6a737d;
+    }
+
+    .status-none {
+      color: #b8bcc3;
+    }
+
+    body.dark-mode .status-none {
+      color: #474c55;
+    }
+
+     .data-content-name {
+      color: #30363d;
+    }
+    body.dark-mode .data-content-name {
+      color: #c9d1d9;
+    }
+
     .text-gray-800 {
       color: #949da7;
     }
@@ -36,7 +64,7 @@
     }
 
     .text-gray-900 {
-      color: #24292e;
+      color: #30363d;
     }
 
     .bg-gray-100 {
@@ -113,21 +141,21 @@
     }
 
     #theme-switcher,
-    #export-csv-button {
+    #export-json-button {
       background-color: #e1e4e8;
-      color: #24292e;
+      color: #626c78;
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
       transition: background-color 0.15s ease-in-out;
     }
 
     #theme-switcher:hover,
-    #export-csv-button:hover {
+    #export-json-button:hover {
       background-color: #d1d5da;
     }
 
     #theme-switcher:focus,
-    #export-csv-button:focus {
+    #export-json-button:focus {
       outline: none;
       box-shadow: 0 0 0 2px rgba(108, 117, 125, 0.75);
     }
@@ -154,6 +182,7 @@
       font-size: 0.875rem;
     }
 
+    /* Dark Mode Styles */
     body.dark-mode {
       background-color: #0d1117;
       color: #c9d1d9;
@@ -221,18 +250,14 @@
     }
 
     body.dark-mode #theme-switcher,
-    body.dark-mode #export-csv-button {
+    body.dark-mode #export-json-button {
       background-color: #21262d;
-      color: #c9d1d9;
+      color: #97a1ab;
     }
 
     body.dark-mode #theme-switcher:hover,
-    body.dark-mode #export-csv-button:hover {
+    body.dark-mode #export-json-button:hover {
       background-color: #30363d;
-    }
-
-    body.dark-mode .text-gray-500 {
-      color: #8b949e;
     }
 
     body.dark-mode .text-red-500 {
@@ -244,67 +269,117 @@
       color: #c9d1d9;
     }
 
-    body.dark-mode .text-gray-400 {
-      color: #31363b;
-    }
-
-    body.dark-mode .hover\:text-gray-500:hover {
-      color: #3c434b;
-    }
-
+    /* Responsive Styles */
     @media (max-width: 768px) {
       .container {
         padding: 1rem;
-        /* Adjust padding for smaller screens */
       }
 
       .flex.justify-between.items-center.mb-6 {
         flex-direction: column;
-        /* Stack elements vertically */
         align-items: flex-start;
         margin-bottom: 1rem;
       }
 
-      .flex.space-x-2.items-center.text-sm {
+      .controls-container {
         flex-direction: column;
         align-items: flex-start;
         width: 100%;
         margin-top: 1rem;
-        /* Add space above buttons */
-        space-x: 0;
-        /* Remove horizontal spacing */
       }
 
-      .flex.space-x-2.items-center.text-sm>* {
+      .controls-container>* {
         margin-bottom: 0.5rem;
-        /* Add vertical spacing between buttons */
         width: 100%;
-        /* Make buttons full width */
       }
 
-      /* Hide Image and Status columns */
       th[data-sort-column="image"],
       th[data-sort-column="status"],
-      td:nth-child(3),
-      /* Image column data */
-      td:nth-child(4) {
-        /* Status column data */
+      td.table-cell-image,
+      td.table-cell-status {
         display: none;
       }
 
-      /* Adjust padding for remaining columns */
       .py-3.px-4 {
         padding: 0.5rem 0.75rem;
       }
 
       .min-w-full {
         min-width: unset;
-        /* Allow table to shrink */
       }
 
       .overflow-x-auto {
         overflow-x: hidden;
-        /* Prevent horizontal scrolling if not needed */
+      }
+    }
+
+    /* Confirmation Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    body.dark-mode .modal-content {
+      background-color: #161b22;
+      border: 1px solid #30363d;
+    }
+
+    body.dark-mode #modal-cancel-button {
+      background-color: #21262d;
+      /* Darker background for dark mode */
+      color: #c9d1d9;
+      /* Lighter text for dark mode */
+    }
+
+    body.dark-mode #modal-cancel-button:hover {
+      background-color: #30363d;
+      /* Even darker on hover in dark mode */
+    }
+
+    /* Loading Spinner */
+    .loader {
+      border: 4px solid #f3f3f3;
+      /* Light grey */
+      border-top: 4px solid #3498db;
+      /* Blue */
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 2rem auto;
+    }
+
+    body.dark-mode .loader {
+      border-color: #21262d;
+      border-top-color: #2188ff;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
       }
     }
   </style>
@@ -313,22 +388,26 @@
 <body class="p-6">
   <div class="container mx-auto bg-white rounded-lg shadow-xl p-8">
     <div class="flex justify-between items-center mb-6">
-      <h1 class="text-3xl font-bold text-gray-800">dockpeek</h1>
-      <div class="flex space-x-2 items-center text-sm">
+        <h1 class="logo-title text-3xl font-bold">dockpeek</h1>
+      <div class="flex space-x-4 items-center text-sm controls-container">
         <a href="https://github.com/dockpeek/dockpeek" target="_blank"
-          class="text-gray-400 hover:text-gray-500 no-underline mr-4">
+          class="github no-underline">
           GitHub
         </a>
-        <button id="export-csv-button"
-          class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75">
-          Export to CSV
+        <button id="theme-switcher" title="Switch Theme"
+          class="p-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75">
+          <span id="theme-icon"> </span>
         </button>
-        <button id="theme-switcher"
-          class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75">
-          Switch to Dark Mode
+        <button id="export-json-button"
+          class="flex items-center space-x-2 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M12 12v6m0 0l-3-3m3 3l3-3m-6-9h6" />
+          </svg>
+          <span>Export to JSON</span>
         </button>
         <a href="/logout" id="logout-button"
-          class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75">
+          class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75 text-center">
           Logout
         </a>
       </div>
@@ -340,11 +419,10 @@
     </div>
 
     <div id="container-table-wrapper" class="overflow-x-auto rounded-lg overflow-hidden">
-      <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+      <table class="min-w-full bg-white border border-gray-200">
         <thead class="bg-gray-100">
           <tr>
-            <th
-              class="py-3 px-4 text-left text-sm font-semibold text-gray-700 border-b border-gray-200 rounded-tl-lg sortable-header"
+            <th class="py-3 px-4 text-left text-sm font-semibold text-gray-700 border-b border-gray-200 sortable-header"
               data-sort-column="name">
               Container
             </th>
@@ -356,59 +434,139 @@
               data-sort-column="image">
               Image
             </th>
-            <th
-              class="py-3 px-4 text-left text-sm font-semibold text-gray-700 border-b border-gray-200 rounded-tr-lg sortable-header"
+            <th class="py-3 px-4 text-left text-sm font-semibold text-gray-700 border-b border-gray-200 sortable-header"
               data-sort-column="status">
               Status
             </th>
           </tr>
         </thead>
         <tbody id="container-rows">
-          <tr>
-            <td colspan="4" class="text-center py-8 text-gray-500">
-              Loading container data...
-            </td>
-          </tr>
         </tbody>
       </table>
     </div>
+
   </div>
+
+  <template id="container-row-template">
+    <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
+      <td class="data-content-name py-3 px-4 border-b border-gray-200 font-bold" data-content="name">
+      </td>
+      <td class="py-3 px-4 border-b border-gray-200" data-content="ports">
+      </td>
+      <td class="py-3 px-4 border-b border-gray-200 table-cell-image">
+        <code class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm" data-content="image"></code>
+      </td>
+      <td class="py-3 px-4 border-b border-gray-200 table-cell-status" data-content="status">
+      </td>
+    </tr>
+  </template>
+
+  <div id="confirmation-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <h2 id="modal-title" class="text-xl font-bold mb-4 text-gray-900">Confirmation</h2>
+      <p id="modal-message" class="text-gray-600 mb-6">Are you sure?</p>
+      <div class="flex justify-center space-x-4">
+        <button id="modal-cancel-button"
+          class="px-6 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300">Cancel</button>
+        <button id="modal-confirm-button"
+          class="px-6 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600">Confirm</button>
+      </div>
+    </div>
+  </div>
+
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      let allContainersData = []; // Store raw fetched data
-      let displayedContainers = []; // Store the currently filtered and sorted containers
-      let currentSortColumn = "name"; // Default sort column
-      let currentSortDirection = "asc"; // Default sort direction
+      // --- STATE MANAGEMENT ---
+      let allContainersData = []; // Raw data from the server
+      let filteredAndSortedContainers = []; // Data after filtering and sorting
+      let currentSortColumn = "name";
+      let currentSortDirection = "asc";
+
+      // --- DOM ELEMENT SELECTORS ---
       const searchInput = document.getElementById("search-input");
-      const themeSwitcher = document.getElementById("theme-switcher");
-      const exportCsvButton = document.getElementById("export-csv-button");
+      const containerRowsBody = document.getElementById("container-rows");
       const body = document.body;
+      const rowTemplate = document.getElementById("container-row-template");
 
       /**
-       * Renders the container table based on the provided data, sort column, and sort direction.
-       * @param {Array<Object>} containers - The array of container objects.
-       * @param {string} sortColumn - The column to sort by (e.g., 'name', 'image', 'status').
-       * @param {string} sortDirection - The sort direction ('asc' or 'desc').
+       * Shows a loading indicator in the table body.
        */
-      function displayContainers(containers, sortColumn, sortDirection) {
-        // Create a shallow copy to avoid modifying the original array
-        const sorted = [...containers];
+      function showLoadingIndicator() {
+        containerRowsBody.innerHTML = `<tr><td colspan="4"><div class="loader"></div></td></tr>`;
+      }
 
-        // Apply sorting based on the chosen column and direction
-        sorted.sort((a, b) => {
-          let valA = a[sortColumn];
-          let valB = b[sortColumn];
+      /**
+       * Displays an error message in the table body.
+       * @param {string} message - The error message to display.
+       */
+      function displayError(message) {
+        containerRowsBody.innerHTML = `<tr><td colspan="4" class="text-center py-8 text-red-500">${message}</td></tr>`;
+      }
 
-          // Special handling for status to ensure 'running' is always before 'exited' in asc, or after in desc
-          if (sortColumn === "status") {
+      /**
+       * Renders the container table using the HTML template.
+       */
+      function renderTable() {
+        containerRowsBody.innerHTML = ""; // Clear previous content
+
+        const pageItems = filteredAndSortedContainers;
+
+        if (pageItems.length === 0) {
+          if (searchInput.value) {
+            containerRowsBody.innerHTML = `<tr><td colspan="4" class="text-center py-8 text-gray-500">No containers found matching your criteria.</td></tr>`;
+          } else {
+            containerRowsBody.innerHTML = `<tr><td colspan="4" class="text-center py-8 text-gray-500">No containers to display.</td></tr>`;
+          }
+          return;
+        }
+
+        const fragment = document.createDocumentFragment();
+        for (const c of pageItems) {
+          const clone = rowTemplate.content.cloneNode(true);
+
+          clone.querySelector('[data-content="name"]').textContent = c.name;
+          clone.querySelector('[data-content="image"]').textContent = c.image;
+
+          const statusCell = clone.querySelector('[data-content="status"]');
+          statusCell.textContent = c.status;
+          statusCell.className = `py-3 px-4 border-b border-gray-200 table-cell-status ${c.status === "running" ? "status-running" : "status-exited"}`;
+
+          const portsCell = clone.querySelector('[data-content="ports"]');
+          if (c.ports.length > 0) {
+            portsCell.innerHTML = c.ports.map(p =>
+              `<a href="${p.link}" target="_blank" class="badge text-bg-dark me-1 rounded">${p.host_port}</a> <small class="text-secondary">→ ${p.container_port}</small>`
+            ).join('<br>');
+          } else {
+            portsCell.innerHTML = `<span class="status-none" style="padding-left: 15px;">none</span>`;
+          }
+          fragment.appendChild(clone);
+        }
+        containerRowsBody.appendChild(fragment);
+      }
+
+      /**
+       * Sorts and filters the container list, then triggers a re-render.
+       */
+      function updateDisplay() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+
+        const filtered = allContainersData.filter(c =>
+          c.name.toLowerCase().includes(searchTerm) ||
+          c.image.toLowerCase().includes(searchTerm) ||
+          c.ports.some(p => p.host_port.includes(searchTerm) || p.container_port.includes(searchTerm))
+        );
+
+        filtered.sort((a, b) => {
+          let valA = a[currentSortColumn];
+          let valB = b[currentSortColumn];
+
+          if (currentSortColumn === "status") {
             const statusOrder = { running: 1, exited: 2 };
             valA = statusOrder[valA] || 0;
             valB = statusOrder[valB] || 0;
-          } else if (sortColumn === "ports") {
-            // Sort by first host port number (numeric), or 0 if not available
-            const getFirstPort = (container) =>
-              container.ports.length > 0 ? parseInt(container.ports[0].host_port, 10) : 0;
+          } else if (currentSortColumn === "ports") {
+            const getFirstPort = (container) => container.ports.length > 0 ? parseInt(container.ports[0].host_port, 10) : 0;
             valA = getFirstPort(a);
             valB = getFirstPort(b);
           } else if (typeof valA === "string" && typeof valB === "string") {
@@ -416,203 +574,166 @@
             valB = valB.toLowerCase();
           }
 
-          if (valA < valB) {
-            return sortDirection === "asc" ? -1 : 1;
-          }
-          if (valA > valB) {
-            return sortDirection === "asc" ? 1 : -1;
-          }
+          if (valA < valB) return currentSortDirection === "asc" ? -1 : 1;
+          if (valA > valB) return currentSortDirection === "asc" ? 1 : -1;
           return 0;
         });
 
-        displayedContainers = sorted; // Update the displayedContainers array
-
-        let html = "";
-        if (sorted.length === 0) {
-          html = `<tr><td colspan="4" class="text-center py-8 text-gray-500">No containers found matching your criteria.</td></tr>`;
-        } else {
-          for (const c of sorted) {
-            const statusClass =
-              c.status === "running" ? "status-running" : "status-exited";
-            const ports = c.ports.length
-              ? c.ports
-                .map(
-                  (p) =>
-                    `<a href="${p.link}" target="_blank" class="badge text-bg-dark me-1 rounded">${p.host_port}</a> <small class="text-secondary">→ ${p.container_port}</small>`
-                )
-                .join("<br>")
-              : `<span class="text-muted">none</span>`;
-
-            html += `
-                            <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
-                                <td class="py-3 px-4 border-b border-gray-200">
-                                    <strong class="text-gray-900">${c.name}</strong><br>
-                                </td>
-                                <td class="py-3 px-4 border-b border-gray-200">
-                                    ${ports}
-                                </td>
-                                <td class="py-3 px-4 border-b border-gray-200">
-                                    <code class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm">${c.image}</code>
-                                </td>
-                                <td class="py-3 px-4 border-b border-gray-200 ${statusClass}">
-                                    ${c.status}
-                                </td>
-                            </tr>`;
-          }
-        }
-
-        document.getElementById("container-rows").innerHTML = html;
-
-        // Update header classes for sort indicators
-        document.querySelectorAll(".sortable-header").forEach((header) => {
-          header.classList.remove("asc", "desc");
-          if (header.dataset.sortColumn === sortColumn) {
-            header.classList.add(sortDirection);
-          }
-        });
+        filteredAndSortedContainers = filtered;
+        renderTable();
       }
 
       /**
-       * Filters and displays containers based on search input and current sort settings.
+       * Fetches container data from the backend with improved error handling.
        */
-      function filterAndDisplayContainers() {
-        const searchTerm = searchInput.value.toLowerCase().trim();
-        const filteredContainers = allContainersData.filter((container) => {
-          const nameMatch = container.name.toLowerCase().includes(searchTerm);
-          const imageMatch = container.image
-            .toLowerCase()
-            .includes(searchTerm);
-          const portsMatch = container.ports.some(
-            (p) =>
-              p.host_port.toLowerCase().includes(searchTerm) ||
-              p.container_port.toLowerCase().includes(searchTerm)
-          );
-
-          return nameMatch || imageMatch || portsMatch;
-        });
-        displayContainers(
-          filteredContainers,
-          currentSortColumn,
-          currentSortDirection
-        );
-      }
-
-      // Function to fetch data from the Flask backend
       async function fetchContainerData() {
+        showLoadingIndicator();
         try {
           const response = await fetch("/data");
           if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            let errorMsg;
+            switch (response.status) {
+              case 401:
+              case 403:
+                errorMsg = `Authorization Error (${response.status}): You might need to log in again.`;
+                break;
+              case 500:
+                errorMsg = `Server Error (${response.status}): The server encountered an issue. Please try again later.`;
+                break;
+              default:
+                errorMsg = `HTTP Error: ${response.status} ${response.statusText}`;
+            }
+            throw new Error(errorMsg);
           }
           allContainersData = await response.json();
-          filterAndDisplayContainers();
+          updateDisplay();
         } catch (error) {
           console.error("Error fetching container data:", error);
-          document.getElementById(
-            "container-rows"
-          ).innerHTML = `<tr><td colspan="4" class="text-center py-8 text-red-500">Error loading data: ${error.message}. Is the Flask backend running and accessible at http://localhost:8000?</td></tr>`;
+          const finalMessage = error.message.includes('Failed to fetch')
+            ? `Network Error: Could not connect to the backend. Is it running?`
+            : error.message;
+          displayError(finalMessage);
         }
       }
 
-      // --- Theme Switcher Logic ---
+      // --- THEME SWITCHER LOGIC ---
       function applyTheme(theme) {
+        const themeIcon = document.getElementById("theme-icon");
         if (theme === "dark") {
           body.classList.add("dark-mode");
-          themeSwitcher.textContent = "Switch to Light Mode";
+          themeIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 0111.21 3 7 7 0 0012 21c4.97 0 9-4.03 9-9 0-.07 0-.14-.01-.21z" /></svg>`;
         } else {
           body.classList.remove("dark-mode");
-          themeSwitcher.textContent = "Switch to Dark Mode";
+          themeIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4" /><line x1="12" y1="2" x2="12" y2="4" /><line x1="12" y1="20" x2="12" y2="22" /><line x1="5" y1="5" x2="6.5" y2="6.5" /><line x1="17.5" y1="17.5" x2="19" y2="19" /><line x1="2" y1="12" x2="4" y2="12" /><line x1="20" y1="12" x2="22" y2="12" /><line x1="5" y1="19" x2="6.5" y2="17.5" /><line x1="17.5" y1="6.5" x2="19" y2="5" /></svg>`;
         }
-        localStorage.setItem("theme", theme); // Persist theme preference
+        localStorage.setItem("theme", theme);
       }
 
-      // Load theme preference from localStorage on page load
-      const savedTheme = localStorage.getItem("theme") || "light"; // Default to light
-      applyTheme(savedTheme);
+      // --- MODAL LOGIC ---
+      const modal = document.getElementById("confirmation-modal");
+      const modalConfirmBtn = document.getElementById("modal-confirm-button");
+      const modalCancelBtn = document.getElementById("modal-cancel-button");
 
-      // Toggle theme on button click
-      themeSwitcher.addEventListener("click", () => {
-        const newTheme = body.classList.contains("dark-mode")
-          ? "light"
-          : "dark";
-        applyTheme(newTheme);
-      });
-      // --- End Theme Switcher Logic ---
+      /**
+       * Displays a confirmation modal and returns a Promise that resolves or rejects based on user action.
+       * @param {string} title - The title for the modal.
+       * @param {string} message - The confirmation message.
+       * @param {string} confirmText - The text for the confirm button.
+       */
+      function showConfirmationModal(title, message, confirmText = 'Confirm') {
+        return new Promise((resolve, reject) => {
+          document.getElementById('modal-title').textContent = title;
+          document.getElementById('modal-message').textContent = message;
+          modalConfirmBtn.textContent = confirmText;
+          modal.classList.remove('hidden');
 
-      // --- Export to CSV Logic ---
-      exportCsvButton.addEventListener("click", () => {
-        if (displayedContainers.length === 0) {
-          alert("No data to export.");
-          return;
-        }
+          const confirmHandler = () => {
+            modal.classList.add('hidden');
+            cleanup();
+            resolve();
+          };
 
-        // Added confirmation before exporting
-        const proceed = confirm(
-          "Are you sure you want to download the CSV file?"
-        );
-        if (!proceed) {
-          return; // user cancelled, do nothing
-        }
+          const cancelHandler = () => {
+            modal.classList.add('hidden');
+            cleanup();
+            reject();
+          };
 
-        // CSV header with selected columns only
-        let csvContent = "Container,Host Port(s),Container Port(s),Image\n";
+          const backdropClickHandler = (e) => {
+            if (e.target === modal) {
+              cancelHandler();
+            }
+          };
 
-        displayedContainers.forEach((container) => {
-          const name = `"${container.name.replace(/"/g, '""')}"`;
-          const image = `"${container.image.replace(/"/g, '""')}"`;
+          const cleanup = () => {
+            modalConfirmBtn.removeEventListener('click', confirmHandler);
+            modalCancelBtn.removeEventListener('click', cancelHandler);
+            modal.removeEventListener('click', backdropClickHandler);
+          };
 
-          // Join host ports with semicolon
-          const hostPorts = container.ports
-            .map((p) => p.host_port)
-            .join("; ");
-          const csvHostPorts = `"${hostPorts.replace(/"/g, '""')}"`;
-
-          // Join container ports with semicolon
-          const containerPorts = container.ports
-            .map((p) => p.container_port)
-            .join("; ");
-          const csvContainerPorts = `"${containerPorts.replace(/"/g, '""')}"`;
-
-          csvContent += `${name},${csvHostPorts},${csvContainerPorts},${image}\n`;
+          modalConfirmBtn.addEventListener('click', confirmHandler, { once: true });
+          modalCancelBtn.addEventListener('click', cancelHandler, { once: true });
+          modal.addEventListener('click', backdropClickHandler, { once: true });
         });
+      }
 
-        const blob = new Blob([csvContent], {
-          type: "text/csv;charset=utf-8;",
-        });
-        const link = document.createElement("a");
-        const url = URL.createObjectURL(blob);
-        link.setAttribute("href", url);
-        link.setAttribute("download", "dockpeek_containers.csv");
-        link.style.visibility = "hidden";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      });
-      // --- End Export to CSV Logic ---
 
-      // Initial fetch and display of containers when the page loads
+
+      // --- INITIALIZATION & EVENT LISTENERS ---
+
+      // Initial data fetch
       fetchContainerData();
 
-      // Add event listeners for sorting
+      // Apply saved theme
+      applyTheme(localStorage.getItem("theme") || "dark");
+
+      // Theme switcher
+      document.getElementById("theme-switcher").addEventListener("click", () => {
+        applyTheme(body.classList.contains("dark-mode") ? "light" : "dark");
+      });
+
+      // Search input
+      searchInput.addEventListener("input", updateDisplay);
+
+      // Sorting headers
       document.querySelectorAll(".sortable-header").forEach((header) => {
         header.addEventListener("click", () => {
           const column = header.dataset.sortColumn;
           if (column === currentSortColumn) {
-            currentSortDirection =
-              currentSortDirection === "asc" ? "desc" : "asc";
+            currentSortDirection = currentSortDirection === "asc" ? "desc" : "asc";
           } else {
             currentSortColumn = column;
             currentSortDirection = "asc";
           }
-          filterAndDisplayContainers();
+          // Update header classes for sort direction indicator
+          document.querySelectorAll(".sortable-header").forEach(h => h.classList.remove('asc', 'desc'));
+          header.classList.add(currentSortDirection);
+
+          updateDisplay();
         });
       });
 
-      // Add event listener for search input
-      searchInput.addEventListener("input", filterAndDisplayContainers);
+      // Export to JSON button
+      document.getElementById("export-json-button").addEventListener("click", async () => {
+        if (filteredAndSortedContainers.length === 0) {
+          alert("No data to export.");
+          return;
+        }
 
-      // Optional: Auto-refresh data every 5 seconds
-      // setInterval(fetchContainerData, 5000);
+        try {
+          await showConfirmationModal('Export to JSON', 'Are you sure you want to download the currently displayed container data as a JSON file?', 'Download');
+          const jsonContent = JSON.stringify(filteredAndSortedContainers, null, 2);
+          const blob = new Blob([jsonContent], { type: "application/json" });
+          const link = document.createElement("a");
+          link.href = URL.createObjectURL(blob);
+          link.download = "dockpeek_containers.json";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        } catch {
+          console.log('Export cancelled by user.');
+        }
+      });
     });
   </script>
 </body>
