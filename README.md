@@ -22,7 +22,7 @@
 
 ### Deployment Options
 
-### 🔧 Option 1: Secure Setup (with `socket-proxy`)
+###  Option 1: Secure Setup (with `socket-proxy`)
 
 ```yaml
 services:
