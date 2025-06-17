@@ -4,8 +4,6 @@
 
 **dockpeek** is a lightweight, dashboard for monitoring Docker containers. With an simple UI and built-in authentication, it allows users to inspect container statuses and port mappings securely.
 
----
-
 ## Features
 
 * **Port Mapping Visibility** — Maps host → container ports with clickable links
@@ -14,16 +12,11 @@
 * **Export Data** — Easily export container information in JSON format
 * **Login Authentication** — Simple username/password access
 * **Dark Mode Support** — Theme toggle with persistence
-
----
-
 ## 📸 Screenshots
 
 <p align="left">
   <img src="screenshot.png" alt="Night mode" width="800" />
 </p>
-
----
 
 ## Getting Started
 
